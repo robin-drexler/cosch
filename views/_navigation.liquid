@@ -1,0 +1,10 @@
+<navigation>
+    <ul>
+        {% for day in days %}
+        <li>
+            <a href="{{ day.file_name }}">{{ day.name }}</a>
+        </li>
+        {% endfor %}
+
+    </ul>
+</navigation>
