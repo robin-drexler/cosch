@@ -38,7 +38,7 @@ class ScheduleGenerator
 
     Liquid::Template.file_system = Liquid::LocalFileSystem.new(view_path)
 
-    days_curated = days.map do |day|
+    days_decorated = days.map do |day|
       index = days.index day
       day['file_name'] = index.to_s
 
@@ -51,8 +51,8 @@ class ScheduleGenerator
     FileUtils.mkdir_p('build/')
     FileUtils.rm_rf(Dir.glob('build/*'))
 
-    days_curated.each do |day|
-      html = Liquid::Template.parse(File.read File.join(view_path, 'day.html')).render 'day' => day, 'days' => days_curated
+    days_decorated.each do |day|
+      html = Liquid::Template.parse(File.read File.join(view_path, 'day.html')).render 'day' => day, 'days' => days_decorated, 'active_name' => day['name']
 
       File.open('build/' + day['file_name'], 'w') { |file| file.write(html) }
     end

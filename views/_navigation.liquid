@@ -2,7 +2,7 @@
     <ul>
         {% for day in days %}
         <li>
-            <a href="{{ day.file_name }}">{{ day.name }}</a>
+            <a class="{% if  active_name  == day.name %}active{% else %}{% endif %}" href="{{ day.file_name }}">{{ day.name }}</a>
         </li>
         {% endfor %}
 
