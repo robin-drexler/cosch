@@ -12,7 +12,5 @@ module Test_Helper
       index_html = File.read 'build/index.html'
       Nokogiri::HTML(index_html)
     end
-
-
   end
 end
