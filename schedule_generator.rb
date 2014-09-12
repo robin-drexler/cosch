@@ -1,6 +1,7 @@
 require 'liquid'
 require 'fileutils'
 require 'yaml'
+require_relative 'appcache_version_generator'
 
 VIEW_PATH_ROOT = File.join(File.dirname(__FILE__), 'views')
 
@@ -27,16 +28,18 @@ class ScheduleGenerator
     FileUtils.mkdir_p('build/')
     FileUtils.rm_rf(Dir.glob('build/*'))
 
-    appcache_content = generate_appcache_content(days_decorated)
-
-    File.open('build/' + 'cache.appcache', 'w') { |file| file.write(appcache_content) }
-
     days_decorated.each do |day|
       html = generate_day_html(day, days_decorated)
 
       File.open('build/' + day['file_name'], 'w') { |file| file.write(html) }
     end
 
+    appcache_version_generator = AppcacheVersionGenerator.new
+    appcache_content = generate_appcache_content(days_decorated)
+
+    appcache_content << "#VERSION:" + appcache_version_generator.generate_appcache_version + '#'
+
+    File.open('build/' + 'cache.appcache', 'w') { |file| file.write(appcache_content) }
 
     exitstatus = 0
     p "GO!"

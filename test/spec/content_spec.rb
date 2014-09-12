@@ -3,7 +3,7 @@ require 'nokogiri'
 
 describe 'navigation' do
   it 'should contain slots with talks' do
-    page = Test_Helper::Build_Runner.build_and_read_index_html
+    page = Test_Helper::Build_Helper.build_and_read_index_html
     slots = page.css('.slot-container')
 
     expect(slots.length).to eq(2)
@@ -20,9 +20,9 @@ describe 'navigation' do
   end
 
   it 'should contain talk data' do
-    Test_Helper::Build_Runner.run_build
+    Test_Helper::Build_Helper.run_build
 
-    page = Test_Helper::Build_Runner.build_and_read_index_html
+    page = Test_Helper::Build_Helper.build_and_read_index_html
     talk = page.css('.talk-container')[0]
 
     expect(talk.css('.talk-speaker').text).to include 'Robin'

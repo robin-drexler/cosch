@@ -1,7 +1,7 @@
 require 'nokogiri'
 
 module Test_Helper
-  class Build_Runner
+  class Build_Helper
     def self.run_build
       system('ruby ../bin/build.rb')
     end
@@ -11,6 +11,10 @@ module Test_Helper
 
       index_html = File.read 'build/index.html'
       Nokogiri::HTML(index_html)
+    end
+
+    def self.wipe_build_folder
+      FileUtils.rm_rf(Dir.glob('build/*'))
     end
   end
 end
