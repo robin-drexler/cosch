@@ -5,14 +5,12 @@ describe 'navigation' do
   it 'should contain links to each day' do
     Test_Helper::Build_Runner.run_build
 
-    index_html = File.read 'build/index.html'
-    page = Nokogiri::HTML(index_html)
+    page = Test_Helper::Build_Runner.build_and_read_index_html
+
     link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
     link_pointing_to_second = page.css('nav a[href$="1.html"]')
 
-
     navigation_links = page.css('nav a')
-
 
     expect(navigation_links.length).to eq(2)
 
@@ -21,10 +19,8 @@ describe 'navigation' do
   end
 
   it 'marks current navigation point as active one' do
-    Test_Helper::Build_Runner.run_build
+    page = Test_Helper::Build_Runner.build_and_read_index_html
 
-    index_html = File.read 'build/index.html'
-    page = Nokogiri::HTML(index_html)
     link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
     link_pointing_to_second = page.css('nav a[href$="1.html"]')
 
