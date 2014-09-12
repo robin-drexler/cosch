@@ -2,10 +2,17 @@
 
 <h1>{{day.name}}</h1>
 
-{% for talk in day.talks %}
-  <div>
-    <h2>{{ talk.title }}</h2>
-    from: {{ talk.speaker }}
-  </div>
+{% for slot in day.slots %}
+    <div class="slot-container">
+        <span class="slot-time-start">{{ slot.start }}</span>
+        <span class="slot-time-end">{{ slot.end }}</span>
 
+        {% for talk in slot.talks %}
+            <div class="talk-container">
+                <div class="talk-speaker">{{ talk.speaker }}</div>
+                <div class="talk-title">{{ talk.title }}</div>
+                <div class="talk-location">{{ talk.location }}</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endfor %}

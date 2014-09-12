@@ -1,5 +1,6 @@
 require 'liquid'
 require 'fileutils'
+require 'yaml'
 
 class ScheduleGenerator
   def initialize(argv, stdin=STDIN, stdout=STDOUT, stderr=STDERR, kernel=Kernel)
@@ -8,33 +9,7 @@ class ScheduleGenerator
 
   def execute!
     view_path = File.join(File.dirname(__FILE__), 'views')
-
-
-# noinspection RubyStringKeysInHashInspection
-    days = [{
-              'name' => 'Saturday',
-              'talks' => [
-                {
-                  'speaker' => "Katrin",
-                  'title' => "BWL is my pony"
-                }, {
-                  'speaker' => "Robin",
-                  'title' => "Why everything is awesome"
-                }
-              ]
-            }, {
-              'name' => 'Sunday',
-              'talks' => [
-                {
-                  'speaker' => "Peter",
-                  'title' => "Wurst"
-                }, {
-                  'speaker' => "Robin",
-                  'title' => "Käse"
-                }
-              ]
-            }]
-
+    days = YAML.load_file 'schedule.yml'
 
     Liquid::Template.file_system = Liquid::LocalFileSystem.new(view_path)
 
