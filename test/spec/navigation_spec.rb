@@ -3,9 +3,9 @@ require 'nokogiri'
 
 describe 'navigation' do
   it 'should contain links to each day' do
-    Test_Helper::Build_Runner.run_build
+    Test_Helper::Build_Helper.run_build
 
-    page = Test_Helper::Build_Runner.build_and_read_index_html
+    page = Test_Helper::Build_Helper.build_and_read_index_html
 
     link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
     link_pointing_to_second = page.css('nav a[href$="1.html"]')
@@ -19,7 +19,7 @@ describe 'navigation' do
   end
 
   it 'marks current navigation point as active one' do
-    page = Test_Helper::Build_Runner.build_and_read_index_html
+    page = Test_Helper::Build_Helper.build_and_read_index_html
 
     link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
     link_pointing_to_second = page.css('nav a[href$="1.html"]')

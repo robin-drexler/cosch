@@ -2,7 +2,7 @@ require_relative 'helpers/runner'
 
 describe 'file names' do
   it 'should name the first day\'s file index.html and numerate the others' do
-    Test_Helper::Build_Runner.run_build
+    Test_Helper::Build_Helper.run_build
 
     expect(File.exist? 'build/index.html').to eq(true)
     expect(File.exist? 'build/1.html').to eq(true)
