@@ -1,21 +1,48 @@
 <html manifest="cache.appcache">
+<head>
+
+</head>
+
+<body>
+
 
 {% include 'navigation'%}
 
 <h1>{{day.name}}</h1>
 
 {% for slot in day.slots %}
-    <div class="slot-container">
-        <span class="slot-time-start">{{ slot.start }}</span>
-        <span class="slot-time-end">{{ slot.end }}</span>
+<div class="slot-container">
+    <span class="slot-time-start">{{ slot.start }}</span>
+    <span class="slot-time-end">{{ slot.end }}</span>
 
-        {% for talk in slot.talks %}
-            <div class="talk-container">
-                <div class="talk-speaker">{{ talk.speaker }}</div>
-                <div class="talk-title">{{ talk.title }}</div>
-                <div class="talk-location">{{ talk.location }}</div>
-            </div>
-        {% endfor %}
+    {% for talk in slot.talks %}
+    <div class="talk-container">
+        <div class="talk-speaker">{{ talk.speaker }}</div>
+        <div class="talk-title">{{ talk.title }}</div>
+        <div class="talk-location">{{ talk.location }}</div>
     </div>
+    {% endfor %}
+</div>
 {% endfor %}
+
+<script type="application/javascript">
+    (function () {
+        if (!window.applicationCache) {
+            return;
+        }
+        window.addEventListener('load', function (e) {
+            window.applicationCache.addEventListener('updateready', function (e) {
+                if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                    if (confirm('Schedule has updated. Want to reload?')) {
+                        window.location.reload();
+                    }
+                }
+            }, false);
+
+        }, false);
+    })();
+    
+</script>
+</body>
+
 </html>
