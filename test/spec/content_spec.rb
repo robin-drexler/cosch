@@ -3,8 +3,6 @@ require 'nokogiri'
 
 describe 'navigation' do
   it 'should contain slots with talks' do
-    Test_Helper::Build_Runner.run_build
-
     page = Test_Helper::Build_Runner.build_and_read_index_html
     slots = page.css('.slot-container')
 
