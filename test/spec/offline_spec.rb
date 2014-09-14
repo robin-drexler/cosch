@@ -1,7 +1,7 @@
 require_relative 'helpers/runner'
 require 'nokogiri'
 require 'digest'
-require_relative '../../appcache_version_generator'
+require_relative '../../lib/appcache_version_generator'
 
 describe 'offline cache' do
   APPCACHE_FILE_NAME = 'cache.appcache'
