@@ -3,7 +3,7 @@ require 'nokogiri'
 module Test_Helper
   class Build_Helper
     def self.run_build
-      system('ruby ../bin/build.rb')
+      system('ruby ../bin/build.rb build')
     end
 
     def self.build_and_read_index_html

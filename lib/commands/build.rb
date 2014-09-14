@@ -9,6 +9,7 @@ module RapidSchedule
   module Commands
     class Build
       def execute!
+        p 'Building site'
         days = YAML.load_file 'schedule.yml'
         Liquid::Template.file_system = Liquid::LocalFileSystem.new(VIEW_PATH_ROOT)
 
