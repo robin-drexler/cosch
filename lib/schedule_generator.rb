@@ -1,5 +1,6 @@
 require_relative 'commands/build'
 require_relative 'commands/deploy_to_github_pages'
+require_relative 'commands/new'
 require 'mercenary'
 
 module RapidSchedule
@@ -31,6 +32,15 @@ module RapidSchedule
 
           c.action do |args, options|
             RapidSchedule::Commands::DeployToGithubPages.new.execute! options
+          end
+        end
+
+        p.command(:new) do |c|
+          c.syntax "new PATH"
+          c.description "creates a new schedule skeleton at PATH."
+
+          c.action do |args, options|
+            RapidSchedule::Commands::New.new.execute! args, options
           end
         end
 
