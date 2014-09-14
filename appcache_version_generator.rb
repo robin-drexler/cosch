@@ -5,8 +5,8 @@ class AppcacheVersionGenerator
     md5 = Digest::MD5.new
     md5s = ''
 
-    Dir.glob('build/**').each do |file|
-      md5s << md5.hexdigest(File.read(file))
+    Dir.glob('build/**/*').each do |file|
+      md5s << md5.hexdigest(File.read(file)) if File.file? file
     end
 
     md5.hexdigest md5s
