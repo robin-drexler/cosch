@@ -3,7 +3,7 @@ require 'fileutils'
 require 'yaml'
 require_relative 'appcache_version_generator'
 
-VIEW_PATH_ROOT = File.join(File.dirname(__FILE__), '..' ,'views')
+VIEW_PATH_ROOT = File.join(File.dirname(__FILE__), 'views')
 
 class ScheduleGenerator
   def initialize(argv, stdin=STDIN, stdout=STDOUT, stderr=STDERR, kernel=Kernel)
