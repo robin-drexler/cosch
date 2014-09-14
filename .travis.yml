@@ -1,7 +1,11 @@
 language: ruby
 rvm:
   - 2.1.0
-  - 2.0.0-p247
+  - 2.0.0
+
+addons:
+  code_climate:
+    repo_token: 2763473019696544cb730de0080d81ad07dff38cb947e84b785eed9b7bdc6ac7 
 
 script:
   - cd test && bundle exec rspec spec/
