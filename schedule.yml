@@ -1,8 +1,6 @@
--
-  name: 'Saturday'
+- name: 'Saturday'
   slots:
-    -
-      start: '12:00'
+    - start: '12:00'
       end: '13:00'
 
       talks:
@@ -14,25 +12,20 @@
           title: 'Geloet is jsut not worth it'
           location: 'H2'
 
-    -
-      start: '12:00'
+    - start: '12:00'
       end: '13:00'
 
       talks:
-        -
-          speaker: 'Peter'
+        - speaker: 'Peter'
           title: 'Wurst is good'
           location: 'H1'
 
--
-  name: 'Sunday'
+- name: 'Sunday'
   slots:
-    -
-      start: '15:00'
+    - start: '15:00'
       end: '16:00'
 
       talks:
-        -
-          speaker: 'Robin Drexler'
+        - speaker: 'Robin Drexler'
           title: 'How Geloet will save us all pt 2'
           location: 'H1'
