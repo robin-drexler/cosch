@@ -34,6 +34,8 @@ class ScheduleGenerator
       File.open('build/' + day['file_name'], 'w') { |file| file.write(html) }
     end
 
+    copy_static_to_build
+
     appcache_version_generator = AppcacheVersionGenerator.new
     appcache_content = generate_appcache_content(days_decorated)
 
@@ -62,4 +64,13 @@ class ScheduleGenerator
   def generate_appcache_content(days_decorated)
     appcache_content = Liquid::Template.parse(File.new(File.join(VIEW_PATH_ROOT, 'cache.appcache')).read).render 'resources' => days_decorated.map { |day| day['file_name'] }
   end
+
+  def copy_static_to_build
+    static_folder_path = 'static'
+
+    return unless Dir.exist? static_folder_path
+
+    FileUtils.cp_r(Dir[static_folder_path + '/*'], 'build')
+  end
+
 end
