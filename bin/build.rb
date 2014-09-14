@@ -1,2 +1,3 @@
+#!/usr/bin/env ruby
 require_relative '../lib/schedule_generator'
-ScheduleGenerator.new(ARGV.dup).execute!
+RapidSchedule::ScheduleGenerator.new(ARGV.dup).execute!
