@@ -7,8 +7,8 @@ describe 'offline cache' do
   APPCACHE_FILE_NAME = 'cache.appcache'
 
   it 'should create a appcache file that contains all html files' do
-    Test_Helper::Build_Helper.run_build
-    appcache_path = 'build/' + APPCACHE_FILE_NAME
+    Test_Helper::Build_Helper.run_new_and_build
+    appcache_path = Test_Helper::Build_Helper::BUILD_DIR + '/' + APPCACHE_FILE_NAME
 
     expect(File.exist? appcache_path).to eq(true)
 
@@ -36,16 +36,16 @@ CACHECONTENT
     md5 = Digest::MD5.new
     test_md5 = md5.hexdigest test_content
 
-    File.open('build/' + 'foo', 'w') { |file| file.write(test_content) }
+    File.open(Test_Helper::Build_Helper::BUILD_DIR + '/' + 'foo', 'w') { |file| file.write(test_content) }
 
     appcache_version_generator = AppcacheVersionGenerator.new
-    expect(appcache_version_generator.generate_appcache_version).to eq(md5.hexdigest test_md5)
+    expect(appcache_version_generator.generate_appcache_version(Test_Helper::Build_Helper::BUILD_DIR)).to eq(md5.hexdigest test_md5)
   end
 
   it 'should contain a version identifier' do
-    Test_Helper::Build_Helper.run_build
+    Test_Helper::Build_Helper.run_new_and_build
 
-    appcache_path = 'build/' + APPCACHE_FILE_NAME
+    appcache_path = Test_Helper::Build_Helper::BUILD_DIR + '/' + APPCACHE_FILE_NAME
     appcache_content =  File.new(appcache_path).read
     match_regex = %r{^#VERSION:(.*)#$}
 

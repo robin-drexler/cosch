@@ -3,7 +3,7 @@ require 'nokogiri'
 
 describe 'navigation' do
   it 'should contain links to each day' do
-    Test_Helper::Build_Helper.run_build
+    Test_Helper::Build_Helper.run_new_and_build
 
     page = Test_Helper::Build_Helper.build_and_read_index_html
 

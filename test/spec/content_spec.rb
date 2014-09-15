@@ -20,7 +20,7 @@ describe 'navigation' do
   end
 
   it 'should contain talk data' do
-    Test_Helper::Build_Helper.run_build
+    Test_Helper::Build_Helper.run_new_and_build
 
     page = Test_Helper::Build_Helper.build_and_read_index_html
     talk = page.css('.talk-container')[0]

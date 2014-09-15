@@ -2,12 +2,13 @@ require_relative 'helpers/runner'
 
 describe 'file names' do
   it 'should name the first day\'s file index.html and numerate the others' do
-    Test_Helper::Build_Helper.run_build
 
-    expect(File.exist? 'build/index.html').to eq(true)
-    expect(File.exist? 'build/1.html').to eq(true)
+    Test_Helper::Build_Helper.run_new_and_build
 
-    expect(Dir['build/*.html'].length).to eq(2)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/index.html').to eq(true)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/1.html').to eq(true)
+
+    expect(Dir[Test_Helper::Build_Helper::BUILD_DIR + '/*.html'].length).to eq(2)
   end
 
 end

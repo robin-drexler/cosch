@@ -37,7 +37,7 @@ module RapidSchedule
         appcache_version_generator = AppcacheVersionGenerator.new
         appcache_content = generate_appcache_content(days_decorated)
 
-        appcache_content << "#VERSION:" + appcache_version_generator.generate_appcache_version + '#'
+        appcache_content << "#VERSION:" + appcache_version_generator.generate_appcache_version('build') + '#'
 
         File.open('build/' + 'cache.appcache', 'w') { |file| file.write(appcache_content) }
       end

@@ -10,7 +10,7 @@ With RapidSchedule you'll be able to get an unconference schedule up on **Github
 
 When you're hacking the schedule, you probably are in a hurry and have a lot of other stuff to do.
 
-The entire schedule consists of a single `.yml` file, with an flexible, yet easy structure.
+The entire schedule consists of a single `.yml` file, with a flexible, yet easy structure.
 
 #### Example multi day conference
 
