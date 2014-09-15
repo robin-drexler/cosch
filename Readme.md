@@ -66,7 +66,7 @@ No worries, if the attendee is online, she will receive schedule updates.
 ## Basic Usage
 The fastest way from zero to online schedule.
 
-* Install the gem (doesn't work yet, checkout the repo instead)
+* Install the gem (doesn't work yet, checkout the repo instead and use `/PATH/TO/REPO/bin/build.rb` instead of `rapidschedule` for commands)
 * Create your new schedule `rapidschedule new DIR`
 * Create repo on Github. (push initial content, if you like)
 * Edit `schedule.yml` to fit your needs (Push your changes, if you like)
