@@ -1,7 +1,7 @@
 require_relative 'helpers/runner'
 require 'nokogiri'
 require 'digest'
-require_relative '../../lib/appcache_version_generator'
+require_relative '../../lib/appcache_path_generator'
 
 describe 'offline cache' do
   APPCACHE_FILE_NAME = 'cache.appcache'
@@ -40,19 +40,6 @@ describe 'offline cache' do
     page = Test_Helper::Build_Helper.build_and_read_index_html
 
     expect(page.css('html').attr('manifest').value).to eq(APPCACHE_FILE_NAME)
-  end
-
-  it 'should generate a md5 of file content md5 of build folder as version identifier' do
-    Test_Helper::Build_Helper.wipe_build_folder
-
-    test_content = 'the world is not going to spin itself'
-    md5 = Digest::MD5.new
-    test_md5 = md5.hexdigest test_content
-
-    File.open(Test_Helper::Build_Helper::BUILD_DIR + '/' + 'foo', 'w') { |file| file.write(test_content) }
-
-    appcache_version_generator = AppcacheVersionGenerator.new
-    expect(appcache_version_generator.generate_appcache_version(Test_Helper::Build_Helper::BUILD_DIR)).to eq(md5.hexdigest test_md5)
   end
 
   it 'should contain a version identifier' do
