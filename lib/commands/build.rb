@@ -3,7 +3,7 @@ require 'fileutils'
 require 'yaml'
 require_relative '../appcache_version_generator'
 
-VIEW_PATH_ROOT = File.join(File.dirname(__FILE__), '..', 'template', 'views')
+VIEW_PATH_ROOT = File.join('views')
 
 module RapidSchedule
   module Commands
