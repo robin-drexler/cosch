@@ -1,5 +1,6 @@
 require_relative 'helpers/runner'
 require_relative '../../lib/appcache_path_generator'
+require 'digest'
 
 describe 'app cache path generator' do
   it 'should return files in given folder with relative paths' do
@@ -27,16 +28,19 @@ describe 'app cache path generator' do
     test_dir = 'test_dir'
     content = 'lala'
     another_content = 'lili'
+    md5_content = content + another_content
+    md5 = Digest::MD5.new
 
-    #hash of hash of both contents
-    expected_version = 'ef3288b44ae7f0b0e49f75e9bcfbcb91'
+    expected_version = md5.hexdigest md5_content
+
 
     FileUtils.rm_rf(test_dir)
     FileUtils.mkdir_p(test_dir)
 
-
     File.open(File.join(test_dir, 'a_file'), 'w') { |file| file.write(content) }
     File.open(File.join(test_dir, 'a_file2'), 'w') { |file| file.write(another_content) }
+
+
 
     appcache_generator = AppcachePathGenerator.new test_dir
     version = appcache_generator.appcache_version

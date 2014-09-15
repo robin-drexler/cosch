@@ -20,13 +20,13 @@ class AppcachePathGenerator
   def appcache_version
 
     md5 = Digest::MD5.new
-    md5s = ''
+    content = ''
 
     paths.each do |file|
-      md5s << md5.hexdigest(File.read(File.join(@source_dir, file)))
+      content << File.read(File.join(@source_dir, file))
     end
 
-    md5.hexdigest md5s
+    md5.hexdigest content
   end
 
 end
