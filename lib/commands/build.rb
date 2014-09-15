@@ -2,6 +2,7 @@ require 'liquid'
 require 'fileutils'
 require 'yaml'
 require_relative '../appcache_version_generator'
+require 'find'
 
 VIEW_PATH_ROOT = File.join('views')
 
@@ -35,7 +36,7 @@ module RapidSchedule
         copy_static_to_build
 
         appcache_version_generator = AppcacheVersionGenerator.new
-        appcache_content = generate_appcache_content(days_decorated)
+        appcache_content = generate_appcache_content()
 
         appcache_content << "#VERSION:" + appcache_version_generator.generate_appcache_version('build') + '#'
 
@@ -56,8 +57,14 @@ module RapidSchedule
       end
 
 
-      def generate_appcache_content(days_decorated)
-        Liquid::Template.parse(File.new(File.join(VIEW_PATH_ROOT, 'cache.appcache')).read).render 'resources' => days_decorated.map { |day| day['file_name'] }
+      def generate_appcache_content()
+        resources = []
+        # cd into build dir so glob does not contain build/ prefix in paths
+        Dir.chdir('build') do
+         resources = Dir["**/*"].reject { |i| File.directory? i }
+        end
+
+        Liquid::Template.parse(File.new(File.join(VIEW_PATH_ROOT, 'cache.appcache')).read).render 'resources' => resources
       end
 
       def copy_static_to_build
