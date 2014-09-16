@@ -11,7 +11,8 @@ module RapidSchedule
     class Build
       def execute!
         p 'Building site'
-        days = YAML.load_file 'schedule.yml'
+        config = YAML.load_file 'schedule.yml'
+        days = config["days"]
         Liquid::Template.file_system = Liquid::LocalFileSystem.new(VIEW_PATH_ROOT)
 
         days_decorated = days.map do |day|
@@ -27,8 +28,9 @@ module RapidSchedule
         FileUtils.mkdir_p('build/')
         FileUtils.rm_rf(Dir.glob('build/*'))
 
+        config["days"] = days_decorated
         days_decorated.each do |day|
-          html = generate_day_html(day, days_decorated)
+          html = generate_day_html(day, config)
 
           File.open('build/' + day['file_name'], 'w') { |file| file.write(html) }
         end
@@ -44,15 +46,16 @@ module RapidSchedule
       end
 
       private
-      def generate_day_html(day, days_decorated)
+      def generate_day_html(day, config)
         html_path = File.join(VIEW_PATH_ROOT, 'day.html')
         file_content = File.new(html_path).read
 
         Liquid::Template.parse(file_content).render(
           {
             'day' => day,
-            'days' => days_decorated,
-            'active_name' => day['name']
+            'days' => config['days'],
+            'active_name' => day['name'],
+            'title' => config['title']
           })
       end
 

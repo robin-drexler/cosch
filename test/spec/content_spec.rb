@@ -20,8 +20,6 @@ describe 'navigation' do
   end
 
   it 'should contain talk data' do
-    Test_Helper::Build_Helper.run_new_and_build
-
     page = Test_Helper::Build_Helper.build_and_read_index_html
     talk = page.css('.talk-container')[0]
 
@@ -30,4 +28,12 @@ describe 'navigation' do
     expect(talk.css('.talk-title').text).to include 'How Geloet will save us all'
 
   end
+
+  it 'should contain conference title' do
+    page = Test_Helper::Build_Helper.build_and_read_index_html
+    header = page.css('header h1')
+
+    expect(header.text).to include 'My awesome conference'
+  end
+
 end

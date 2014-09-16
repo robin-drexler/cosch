@@ -6,11 +6,14 @@
 
 <body>
 <div class="content">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
 
 
   {% include 'navigation'%}
 
-  <h1>{{day.name}}</h1>
+  <h2>{{day.name}}</h2>
 
   {% for slot in day.slots %}
   <div class="slot-container">
