@@ -1,47 +1,55 @@
 <html manifest="cache.appcache">
 <head>
   <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+<div class="content">
 
 
-{% include 'navigation'%}
+  {% include 'navigation'%}
 
-<h1>{{day.name}}</h1>
+  <h1>{{day.name}}</h1>
 
-{% for slot in day.slots %}
-<div class="slot-container">
-    <span class="slot-time-start">{{ slot.start }}</span>
+  {% for slot in day.slots %}
+  <div class="slot-container">
+    <span class="slot-time-start">{{ slot.start }}</span> -
     <span class="slot-time-end">{{ slot.end }}</span>
 
-    {% for talk in slot.talks %}
-    <div class="talk-container">
-        <div class="talk-speaker">{{ talk.speaker }}</div>
+    <div class="talks-container">
+      {% for talk in slot.talks %}
+      <div class="talk-container">
         <div class="talk-title">{{ talk.title }}</div>
-        <div class="talk-location">{{ talk.location }}</div>
+        <div class="talk-footer">
+          <div class="talk-speaker">Speaker: {{ talk.speaker }}</div>
+          <div class="talk-location">Location: {{ talk.location }}</div>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}
 
 <script type="application/javascript">
-    (function () {
-        if (!window.applicationCache) {
-            return;
+  (function () {
+    if (!window.applicationCache) {
+      return;
+    }
+    window.addEventListener('load', function (e) {
+      window.applicationCache.addEventListener('updateready', function (e) {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+          if (confirm('Schedule has updated. Want to reload?')) {
+            window.location.reload();
+          }
         }
-        window.addEventListener('load', function (e) {
-            window.applicationCache.addEventListener('updateready', function (e) {
-                if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-                    if (confirm('Schedule has updated. Want to reload?')) {
-                        window.location.reload();
-                    }
-                }
-            }, false);
+      }, false);
 
-        }, false);
-    })();
-    
+    }, false);
+  })();
+
 </script>
 </body>
 
