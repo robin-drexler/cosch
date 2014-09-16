@@ -21,11 +21,12 @@ describe 'navigation' do
   it 'marks current navigation point as active one' do
     page = Test_Helper::Build_Helper.build_and_read_index_html
 
-    link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
-    link_pointing_to_second = page.css('nav a[href$="1.html"]')
+    active_li = page.css('nav ul li.active')
+    active_li_a = active_li.css('a')
 
-    expect(link_pointing_to_index_page.attr("class").value).to include('active')
-    expect(link_pointing_to_second.attr("class").value).not_to include('active')
+    # make sure it's the only active one
+    expect(active_li.length).to eq(1)
+    expect(active_li_a.attr('href').content).to include('index.html')
   end
 
 end
