@@ -15,15 +15,7 @@ module RapidSchedule
         days = config["days"]
         Liquid::Template.file_system = Liquid::LocalFileSystem.new(VIEW_PATH_ROOT)
 
-        days_decorated = days.map do |day|
-          index = days.index day
-          day['file_name'] = index.to_s
-
-          day['file_name'] = 'index' if index == 0
-          day['file_name'] += '.html'
-
-          day
-        end
+        days_decorated = decorate_days_with_file_names(days)
 
         FileUtils.mkdir_p('build/')
         FileUtils.rm_rf(Dir.glob('build/*'))
@@ -46,6 +38,18 @@ module RapidSchedule
       end
 
       private
+      def decorate_days_with_file_names(days)
+        days_decorated = days.map do |day|
+          index = days.index day
+          day['file_name'] = index.to_s
+
+          day['file_name'] = 'index' if index == 0
+          day['file_name'] += '.html'
+
+          day
+        end
+      end
+
       def generate_day_html(day, config)
         html_path = File.join(VIEW_PATH_ROOT, 'day.html')
         file_content = File.new(html_path).read
