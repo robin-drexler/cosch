@@ -5,6 +5,9 @@
 At an unconference, the schedule is often decided last minute.
 With RapidSchedule you'll be able to get an unconference schedule up on **Github Pages** and delivered to the attendees in minutes.
 
+### Beware!
+The responsive layout is currently made using flexbox, which will cause problems in older browsers.
+Use at own risk.
 
 ## Features
 
