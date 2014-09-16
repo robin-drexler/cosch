@@ -2,7 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/robin-drexler/rapid-schedule/badges/gpa.svg)](https://codeclimate.com/github/robin-drexler/rapid-schedule)
 # Purpose?
 
-At an unconference, the schedule is often decided last minute.
+At an unconference, the schedule is often decided last minute and pretty volatile.
 With RapidSchedule you'll be able to get an unconference schedule up on **Github Pages** and delivered to the attendees in minutes.
 
 ### Beware!
