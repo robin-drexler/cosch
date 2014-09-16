@@ -13,7 +13,7 @@ class AppcachePathGenerator
     Dir.chdir(@source_dir) do
       resources = Dir["**/*"].reject { |i| File.directory? i }
     end
-    resources
+    resources.sort
   end
 
   # might be better placed elsewhere
