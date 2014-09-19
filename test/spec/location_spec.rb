@@ -15,6 +15,9 @@ describe 'location views' do
     expect(talk.css('.talk-location').text).to include 'H1'
     expect(talk.css('.talk-title').text).to include 'How Geloet will save us all'
 
+    expect(page.css('.slot-time-start')[0].text).to include '12:00'
+    expect(page.css('.slot-time-end')[0].text).to include '13:00'
+
   end
 
   it 'should contain conference title' do
