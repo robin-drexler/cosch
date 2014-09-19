@@ -15,7 +15,8 @@ describe 'offline cache' do
     appcache_content = File.new(appcache_path).read
 
     expect(appcache_content).to include "index.html"
-    expect(appcache_content).to include "\n1.html\n"
+    expect(appcache_content).to include "\nSunday.html\n"
+    expect(appcache_content).to include "\nSundayH1.html\n"
   end
 
   it 'should create a appcache file that contains static files' do
