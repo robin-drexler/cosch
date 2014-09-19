@@ -13,12 +13,12 @@ describe 'file names' do
 
     Test_Helper::Build_Helper.run_new_and_build
 
-    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/indexH1.html').to eq(true)
-    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/indexH2.html').to eq(true)
-    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/SundayH1.html').to eq(true)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/index_H1.html').to eq(true)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/index_H2.html').to eq(true)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/Sunday_H1.html').to eq(true)
 
     # should not create files if no talks in location
-    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/SundayH2.html').to eq(false)
+    expect(File.exist? Test_Helper::Build_Helper::BUILD_DIR + '/Sunday_H2.html').to eq(false)
 
   end
 

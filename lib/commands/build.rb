@@ -72,7 +72,7 @@ module RapidSchedule
       end
 
       def generate_location_path_for_day(day, location)
-        'build/' + day['file_name'] + sanitize_filename(location) + '.html'
+        'build/' + day['file_name'] + '_' + sanitize_filename(location) + '.html'
       end
 
       # XXX file names not unique anymore! Could be overridden

@@ -5,7 +5,7 @@ describe 'location views' do
 
   it 'should contain talk data for location' do
     Test_Helper::Build_Helper.run_new_and_build
-    path = File.read File.join(Test_Helper::Build_Helper::BUILD_DIR, 'indexH1.html')
+    path = File.read File.join(Test_Helper::Build_Helper::BUILD_DIR, 'index_H1.html')
 
     page = Nokogiri::HTML(path)
 
@@ -22,7 +22,7 @@ describe 'location views' do
 
   it 'should contain conference title' do
     Test_Helper::Build_Helper.run_new_and_build
-    path = File.read File.join(Test_Helper::Build_Helper::BUILD_DIR, 'indexH1.html')
+    path = File.read File.join(Test_Helper::Build_Helper::BUILD_DIR, 'index_H1.html')
     page = Nokogiri::HTML(path)
 
     expect(page.css('header').text).to include 'My awesome conference'

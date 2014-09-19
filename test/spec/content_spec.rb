@@ -37,13 +37,13 @@ describe 'content' do
   end
 
   it 'should contain talks with links to their location views' do
-    expected_location_view_path = 'indexH1.html'
+    expected_location_view_path = 'index_H1.html'
 
     page = Test_Helper::Build_Helper.build_and_read_index_html
     talk = page.css('.talk-container')[0]
     location = talk.css('.talk-location')
 
-    expect(location.css('a[href$="indexH1.html"]').length).to eq(1)
+    expect(location.css("a[href$=\"#{expected_location_view_path}\"]").length).to eq(1)
 
     # make sure linked file actually exists
     location_view_path = File.join(Test_Helper::Build_Helper::BUILD_DIR, expected_location_view_path)
