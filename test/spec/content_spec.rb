@@ -1,7 +1,7 @@
 require_relative 'helpers/runner'
 require 'nokogiri'
 
-describe 'navigation' do
+describe 'content' do
   it 'should contain slots with talks' do
     page = Test_Helper::Build_Helper.build_and_read_index_html
     slots = page.css('.slot-container')
@@ -34,6 +34,21 @@ describe 'navigation' do
     header = page.css('header h1')
 
     expect(header.text).to include 'My awesome conference'
+  end
+
+  it 'should contain talks with links to their location views' do
+    expected_location_view_path = 'indexH1.html'
+
+    page = Test_Helper::Build_Helper.build_and_read_index_html
+    talk = page.css('.talk-container')[0]
+    location = talk.css('.talk-location')
+
+    expect(location.css('a[href$="indexH1.html"]').length).to eq(1)
+
+    # make sure linked file actually exists
+    location_view_path = File.join(Test_Helper::Build_Helper::BUILD_DIR, expected_location_view_path)
+    expect(File.exist? location_view_path).to eq(true)
+
   end
 
 end

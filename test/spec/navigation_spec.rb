@@ -8,7 +8,7 @@ describe 'navigation' do
     page = Test_Helper::Build_Helper.build_and_read_index_html
 
     link_pointing_to_index_page = page.css('nav a[href$="index.html"]')
-    link_pointing_to_second = page.css('nav a[href$="1.html"]')
+    link_pointing_to_second = page.css('nav a[href$="Sunday.html"]')
 
     navigation_links = page.css('nav a')
 

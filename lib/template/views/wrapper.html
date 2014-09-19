@@ -1,0 +1,32 @@
+<html manifest="cache.appcache">
+<head>
+  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="content">
+  {{ content }}
+</div>
+
+<script type="application/javascript">
+  (function () {
+    if (!window.applicationCache) {
+      return;
+    }
+    window.addEventListener('load', function (e) {
+      window.applicationCache.addEventListener('updateready', function (e) {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+          if (confirm('Schedule has updated. Want to reload?')) {
+            window.location.reload();
+          }
+        }
+      }, false);
+
+    }, false);
+  })();
+
+</script>
+</body>
+
+</html>
