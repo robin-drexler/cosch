@@ -11,4 +11,5 @@ end
 group :test do
   gem 'rspec', '~> 3.1.0'
   gem 'nokogiri', '~> 1.6.3.1'
+  gem "codeclimate-test-reporter", group: :test, require: nil
 end
