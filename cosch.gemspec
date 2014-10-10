@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'cosch'
-  s.version     = '1.0.1'
+  s.version     = '1.0.2'
   s.date        = '2014-10-10'
   s.summary     = "Generate your conference schedule easily"
-  s.description = "See: https://github.com/robin-drexler/cosch"
+  s.description = "Generate your conference schedule easily. See: https://github.com/robin-drexler/cosch"
   s.authors     = ["Robin Drexler"]
 
   all_files       = `git ls-files -z`.split("\x0")
