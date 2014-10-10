@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cosch (1.0.0)
+    cosch (1.0.1)
       liquid (~> 2.6.1)
       mercenary (~> 0.3.4)
 
