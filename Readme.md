@@ -71,11 +71,11 @@ No worries, if the attendee is online, she will receive schedule updates.
 ## Basic Usage
 The fastest way from zero to online schedule.
 
-* Install the gem (doesn't work yet, checkout the repo instead and use `/PATH/TO/REPO/bin/build.rb` instead of `rapidschedule` for commands)
-* Create your new schedule `rapidschedule new DIR`
+* Install the gem (doesn't work yet, checkout the repo instead and use `/PATH/TO/REPO/bin/build.rb` instead of `cosch` for commands)
+* Create your new schedule `cosch new DIR`
 * Create repo on Github. (push initial content, if you like)
 * Edit `schedule.yml` to fit your needs (Push your changes, if you like)
-* Deploy to Github Pages: `rapidschedule deploy`
+* Deploy to Github Pages: `cosch deploy`
 * **Done**
 
 ## Commands in detail
