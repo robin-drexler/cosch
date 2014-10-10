@@ -16,7 +16,7 @@ fi
 # why isn't even possible to call the script with ../../ in the first place?
 ABSOLUTE_SCRIPT_PATH=$(cd "$DIR/../../bin/" && pwd)
 
-"$ABSOLUTE_SCRIPT_PATH/build.rb" build
+"$ABSOLUTE_SCRIPT_PATH/cosch.rb" build
 
 cd build
 rm -rf .git

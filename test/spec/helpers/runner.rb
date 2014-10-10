@@ -8,7 +8,7 @@ module Test_Helper
 
     def self.run_new
       self.wipe_new_folder
-      system('ruby ../bin/build.rb new ' + TEST_CONTENT_DIR)
+      system('ruby ../bin/cosch.rb new ' + TEST_CONTENT_DIR)
     end
 
     def self.run_new_and_build
@@ -17,7 +17,7 @@ module Test_Helper
     end
 
     def self.run_build
-      system("cd #{TEST_CONTENT_DIR} && ruby ../../bin/build.rb build")
+      system("cd #{TEST_CONTENT_DIR} && ruby ../../bin/cosch.rb build")
     end
 
     def self.build_and_read_index_html
