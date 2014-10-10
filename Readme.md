@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/robin-drexler/rapid-schedule.svg?branch=master)](https://travis-ci.org/robin-drexler/rapid-schedule)
-[![Code Climate](https://codeclimate.com/github/robin-drexler/rapid-schedule/badges/gpa.svg)](https://codeclimate.com/github/robin-drexler/rapid-schedule)
+[![Build Status](https://travis-ci.org/robin-drexler/cosch.svg?branch=master)](https://travis-ci.org/robin-drexler/rapid-schedule)
+[![Code Climate](https://codeclimate.com/github/robin-drexler/cosch/badges/gpa.svg)](https://codeclimate.com/github/robin-drexler/rapid-schedule)
 # Purpose?
 
 At an unconference, the schedule is often decided last minute and pretty volatile.
