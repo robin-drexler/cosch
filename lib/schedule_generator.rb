@@ -12,8 +12,8 @@ module RapidSchedule
 
     def execute!
       Mercenary.program(:cosch) do |p|
-        p.version '1.0.0'
-        p.description 'Generate your conference schedule rapidly'
+        p.version '1.0.1'
+        p.description 'Generate your conference schedule easily'
         p.syntax "cosch <subcommand>"
 
         # blatantly stolen from jekyll XXX needs tests

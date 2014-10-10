@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'cosch'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2014-10-10'
-  s.summary     = ""
-  s.description = ""
+  s.summary     = "Generate your conference schedule easily"
+  s.description = "See: https://github.com/robin-drexler/cosch"
   s.authors     = ["Robin Drexler"]
 
   all_files       = `git ls-files -z`.split("\x0")
@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('sass', "~> 3.4.4")
   s.add_development_dependency('rspec', "~> 3.1.0")
   s.add_development_dependency('nokogiri', "~> 1.6.3.1")
+
 end
