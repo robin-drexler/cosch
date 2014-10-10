@@ -11,10 +11,21 @@ module RapidSchedule
     end
 
     def execute!
-      Mercenary.program(:rapidschedule) do |p|
-        p.version '0.0.1'
+      Mercenary.program(:cosch) do |p|
+        p.version '1.0.0'
         p.description 'Generate your conference schedule rapidly'
-        p.syntax "rapidschedule <subcommand>"
+        p.syntax "cosch <subcommand>"
+
+        # blatantly stolen from jekyll XXX needs tests
+        p.action do |args|
+          if args.empty?
+            puts p
+          else
+            unless p.has_command?(args.first)
+              raise ArgumentError.new("Invalid command. Use --help for more information")
+            end
+          end
+        end
 
         p.command(:build) do |c|
           c.syntax "build"
