@@ -20,39 +20,39 @@ The entire schedule consists of a single `.yml` file, with a flexible, yet easy 
 #### Example multi day conference
 
 ```yml
-- name: 'Saturday'
-  slots:
-    - start: '12:00'
-      end: '13:00'
+title: My awesome conference
+days:
+  - name: Saturday
+    slots:
+      - start: '12:00'
+        end: '13:00'
 
-      talks:
-        - speaker: 'Robin Drexler'
-          title: 'How Geloet will save us all'
-          location: 'H1'
+        talks:
+          - speaker: Robin Drexler
+            title: How Geloet will save us all
+            location: H1
 
-        - speaker: 'Katrin Werner'
-          title: 'Geloet is jsut not worth it'
-          location: 'H2'
+          - speaker: Katrin Werner
+            title: Geloet is jsut not worth it
+            location: H2
 
-    - start: '12:00'
-      end: '13:00'
+      - start: '12:00'
+        end: '13:00'
 
-      talks:
-        - speaker: 'Peter'
-          title: 'Wurst is good'
-          location: 'H1'
+        talks:
+          - speaker: Peter
+            title: Wurst is good
+            location: H1
 
-- name: 'Sunday'
-  slots:
-    - start: '15:00'
-      end: '16:00'
+  - name: Sunday
+    slots:
+      - start: '15:00'
+        end: '16:00'
 
-      talks:
-        - speaker: 'Robin Drexler'
-          title: 'How Geloet will save us all pt 2'
-          location: 'H1'
-
-
+        talks:
+          - speaker: Robin Drexler
+            title: How Geloet will save us all pt 2
+            location: H1
 ```
 
 ### Easy to deploy
@@ -71,7 +71,7 @@ No worries, if the attendee is online, she will receive schedule updates.
 ## Basic Usage
 The fastest way from zero to online schedule.
 
-* Install the gem (doesn't work yet, checkout the repo instead and use `/PATH/TO/REPO/bin/build.rb` instead of `cosch` for commands)
+* [https://rubygems.org/gems/cosch](Install the gem)
 * Create your new schedule `cosch new DIR`
 * Create repo on Github. (push initial content, if you like)
 * Edit `schedule.yml` to fit your needs (Push your changes, if you like)
