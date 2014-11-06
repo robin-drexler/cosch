@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'cosch'
-  s.version     = '1.0.2'
-  s.date        = '2014-10-10'
+  s.version     = '1.0.3'
+  s.date        = '2014-06-11'
   s.summary     = "Generate your conference schedule easily"
   s.description = "Generate your conference schedule easily. See: https://github.com/robin-drexler/cosch"
   s.authors     = ["Robin Drexler"]
