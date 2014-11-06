@@ -71,7 +71,7 @@ No worries, if the attendee is online she will receive schedule updates again.
 ## Basic Usage
 The fastest way from zero to online schedule.
 
-* [https://rubygems.org/gems/cosch](Install the gem)
+* [Install the gem](https://rubygems.org/gems/cosch)
 * Create your new schedule `cosch new DIR`
 * Create repo on Github. (push initial content, if you like)
 * Edit `schedule.yml` to fit your needs (Push your changes, if you like)
