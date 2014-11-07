@@ -2,8 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/robin-drexler/cosch/badges/gpa.svg)](https://codeclimate.com/github/robin-drexler/rapid-schedule)
 # Purpose?
 
-At an unconference, the schedule is often decided last minute.
-With RapidSchedule you'll be able to get an unconference schedule up on **Github Pages** and delivered to the attendees in minutes.
+With cosch you'll be able to get a conference schedule up on **Github Pages** and delivered to the attendees in minutes.
 
 ### Beware!
 The responsive layout is currently made using flexbox, which will cause problems in older browsers.
