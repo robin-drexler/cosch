@@ -39,7 +39,7 @@ module RapidSchedule
 
         appcache_content << "#VERSION:" + appcache_generator.appcache_version + '#'
 
-        File.open('build/' + 'cache.appcache', 'w') { |file| file.write(appcache_content) }
+        File.write('build/' + 'cache.appcache', appcache_content)
       end
 
 
@@ -107,7 +107,7 @@ module RapidSchedule
         wrapper_path = File.join(VIEW_PATH_ROOT, 'wrapper.html')
         html = Liquid::Template.parse(File.new(wrapper_path).read).render('content' => html)
 
-        File.open(path, 'w') { |file| file.write(html) }
+        File.write(path, html)
       end
 
       def generate_day_html(day, locations)
@@ -137,7 +137,7 @@ module RapidSchedule
 
       def write_schedule_json
         json = JSON.dump(read_config)
-        File.open('build/schedule.json', 'w') { |file| file.write(json) }
+        File.write('build/schedule.json', json)
       end
 
       def sanitize_filename(filename)
