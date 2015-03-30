@@ -1,6 +1,7 @@
 require 'liquid'
 require 'fileutils'
 require 'yaml'
+require 'json'
 require_relative '../appcache_path_generator'
 require_relative '../location_data_generator'
 require 'find'
@@ -12,7 +13,7 @@ module RapidSchedule
     class Build
       def execute!
         p 'Building site'
-        @config = YAML.load_file 'schedule.yml'
+        @config = read_config
         @days = days = @config["days"]
         @location_data_generator = RapidSchedule::LocationDataGenerator.new(@days)
 
@@ -31,6 +32,7 @@ module RapidSchedule
         end
 
         copy_static_to_build
+        write_schedule_json
 
         appcache_generator = AppcachePathGenerator.new 'build'
         appcache_content = generate_appcache_content(appcache_generator.paths)
@@ -40,7 +42,12 @@ module RapidSchedule
         File.open('build/' + 'cache.appcache', 'w') { |file| file.write(appcache_content) }
       end
 
+
       private
+
+      def read_config
+        YAML.load_file 'schedule.yml'
+      end
 
       def create_day_view_for_day(day, locations)
         day_html = generate_day_html(day, locations)
@@ -126,6 +133,11 @@ module RapidSchedule
         return unless Dir.exist? static_folder_path
 
         FileUtils.cp_r(Dir[static_folder_path + '/*'], 'build')
+      end
+
+      def write_schedule_json
+        json = JSON.dump(read_config)
+        File.open('build/schedule.json', 'w') { |file| file.write(json) }
       end
 
       def sanitize_filename(filename)
