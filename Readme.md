@@ -1,3 +1,5 @@
+![](logo.jpg)
+
 [![Build Status](https://travis-ci.org/robin-drexler/cosch.svg?branch=master)](https://travis-ci.org/robin-drexler/cosch)
 [![Code Climate](https://codeclimate.com/github/robin-drexler/cosch/badges/gpa.svg)](https://codeclimate.com/github/robin-drexler/cosch)
 # Purpose?
